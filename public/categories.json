@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Tesla",
+    "allCar": [
+      {
+        "name": "Tesla car",
+        "price": "9000 "
+      },
+      {
+        "name": "Tesla car 2",
+        "price": "9000 "
+      },
+      {
+        "name": "Tesla car 3",
+        "price": "9000 "
+      }
+    ]
+  },
+  {
+    "name": "Honda",
+    "allCar": [
+      {
+        "name": "honda car1",
+        "price": "50000 "
+      },
+      {
+        "name": "honda car 2",
+        "price": "50000 "
+      },
+      {
+        "name": "honda car 3",
+        "price": "50000 "
+      }
+    ]
+  },
+  {
+    "name": "Toyota",
+    "allCar": [
+      {
+        "name": "Toyota car 1",
+        "price": "10000 "
+      },
+      {
+        "name": "Toyota car 2",
+        "price": "10000 "
+      }
+    ]
+  }
+]
