@@ -1,10 +1,13 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleUserLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  const googleProvider = new GoogleAuthProvider();
 
   const handleUserSignup = (event) => {
     event.preventDefault();
@@ -12,7 +15,8 @@ const Signup = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const role = form.role.value;
+    console.log(name, email, password, role);
 
     createUser(email, password)
       .then((userCredential) => {
@@ -23,6 +27,18 @@ const Signup = () => {
       .catch((error) => {
         console.log(error);
         setError(error.message);
+      });
+  };
+
+  const handleWithGoogle = () => {
+    googleUserLogin(googleProvider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+      })
+      .catch((error) => {
+        console.error(error.message);
       });
   };
 
@@ -66,6 +82,20 @@ const Signup = () => {
                   className="input input-bordered"
                 />
               </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Select Category</span>
+                </label>
+                <select
+                  name="role"
+                  className="select select-bordered w-full max-w-xs"
+                >
+                  <option value="buyer">Buyer</option>
+                  <option value="seller">Seller</option>
+                </select>
+              </div>
+
               <p className="text-red-500  font-bold">{error}</p>
               <div className="form-control mt-6">
                 <input
@@ -84,7 +114,7 @@ const Signup = () => {
             </form>
             <div className="-mt-5 mb-5">
               <button
-                //   onClick={handleWithGoogle}
+                onClick={handleWithGoogle}
                 className=" w-full btn btn-sm btn-outline btn-warning"
               >
                 <span className="ml-3">login via google</span>
