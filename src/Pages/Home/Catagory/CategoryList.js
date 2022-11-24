@@ -1,17 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CategoryList = ({ catagori }) => {
-  //   const { name, slots } = catagori;
+  const { name, id } = catagori;
   return (
     <div>
-      <div className="card w-full bg-base-100 shadow-xl image-full">
-        {/* <figure>
-         <img src="https://placeimg.com/400/225/arch" alt="" />
-       </figure> */}
-        <div className="card-body">
-          <h2 className="text-center text-3xl font-bold">{catagori.name}</h2>
+      <Link to={`/categoriall/${id}`}>
+        <div className="card w-full bg-base-100 shadow-xl image-full">
+          <div className="card-body">
+            <h2 className="text-center text-3xl font-bold">{name}</h2>
+            <h2 className="text-center text-3xl font-bold">{id}</h2>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
