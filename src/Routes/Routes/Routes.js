@@ -30,7 +30,8 @@ export const router = createBrowserRouter([
       {
         path: "/categoriall/:id",
         element: <CategoryAll></CategoryAll>,
-        loader: ({ params }) => fetch(`categories.json/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allProducts/${params.id}`),
       },
 
       {

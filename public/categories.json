@@ -47,3 +47,108 @@
     ]
   }
 ]
+
+
+
+// reterterasd
+ [
+  {"categoryId": 01, "name": "Tesla",},
+  {"categoryId": 02, "name": "honda",},
+  {"categoryId": 03, "name": "Toyota",}
+  ]
+
+
+
+ [
+   [
+  "categoryId": 1,
+  "alcars" : [  {
+      "name": "Toyota car 1",
+      "price": "10000 "
+    },
+    {
+      "name": "Toyota car 2",
+      "price": "10000 "
+    }
+  ]
+  ]
+
+   [
+  "categoryId": 2,
+  "alcars" : [  {
+      "name": "honda car 1",
+      "price": "10000 "
+    },
+    {
+      "name": "honda car 2",
+      "price": "10000 "
+    }]
+  ]
+   [
+  "categoryId": 2,
+  "alcars" : [  {
+      "name": "honda car 1",
+      "price": "10000 "
+    },
+    {
+      "name": "honda car 2",
+      "price": "10000 "
+    }]
+  ]
+]
+
+
+
+// ;sjdfadfg
+
+
+[    {
+  "categoryId": "01",
+  "name": "Tesla"
+},
+{
+  "categoryId": "02",
+  "name": "Honda"
+},
+{
+  "categoryId": "03",
+  "name": "Toyota"
+},
+
+]
+
+
+
+[    {
+  "id": "01",
+  "name": "Breaking News"
+},
+{
+  "id": "02",
+  "name": "Regular News"
+},
+{
+  "id": "03",
+  "name": "International News"
+},
+{
+  "id": "04",
+  "name": "Sports"
+},
+{
+  "id": "05",
+  "name": "Entertainment"
+},
+{
+  "id": "06",
+  "name": "Culture"
+},
+{
+  "id": "07",
+  "name": "Arts"
+},
+{
+  "id": "08",
+  "name": "All News"
+}
+]
