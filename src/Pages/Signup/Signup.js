@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
+  const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
   const handleUserSignup = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -8,6 +13,17 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
+
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        setError("");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
   };
 
   return (
@@ -50,6 +66,7 @@ const Signup = () => {
                   className="input input-bordered"
                 />
               </div>
+              <p className="text-red-500  font-bold">{error}</p>
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
@@ -57,6 +74,13 @@ const Signup = () => {
                   value="Sign Up"
                 />
               </div>
+              <p>
+                Already have an account{" "}
+                <Link to="/login" className="text-blue-500">
+                  {" "}
+                  Please Login{" "}
+                </Link>
+              </p>
             </form>
             <div className="-mt-5 mb-5">
               <button

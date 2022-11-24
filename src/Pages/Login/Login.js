@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+  const { userLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
   const handleUserLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -8,6 +13,17 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    userLogin(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setError("");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(error.message);
+      });
   };
 
   return (
@@ -22,6 +38,7 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
+
                 <input
                   type="email"
                   name="email"
@@ -40,6 +57,7 @@ const Login = () => {
                   className="input input-bordered"
                 />
               </div>
+              <p className="text-red-500  font-bold">{error}</p>
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
@@ -47,6 +65,13 @@ const Login = () => {
                   value="LogIn"
                 />
               </div>
+              <p>
+                new to car selling{" "}
+                <Link to="/signup" className="text-blue-500">
+                  {" "}
+                  Create New Account{" "}
+                </Link>
+              </p>
             </form>
           </div>
         </div>

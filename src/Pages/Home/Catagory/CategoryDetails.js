@@ -14,7 +14,7 @@ const CategoryDetails = ({ products }) => {
     brand,
     authenticity,
     features,
-    Describetion,
+    describetion,
   } = products;
   return (
     <div>
@@ -37,7 +37,7 @@ const CategoryDetails = ({ products }) => {
           <p> Brand : {brand}</p>
           <p> Authenticity : {authenticity}</p>
           <p> Features : {features}</p>
-          <p> Describetion : {Describetion}</p>
+          <p> Describetion : {describetion}</p>
 
           <div className="card-actions justify-end">
             <div className="badge badge-outline">Fashion</div>
