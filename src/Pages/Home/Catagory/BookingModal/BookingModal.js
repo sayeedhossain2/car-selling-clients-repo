@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const BookingModal = ({ product, setProducts }) => {
@@ -16,6 +17,7 @@ const BookingModal = ({ product, setProducts }) => {
     const location = form.location.value;
     console.log(username, price, email, productName, number, location);
     setProducts(null);
+    toast.success("user Informed successfully");
   };
 
   return (

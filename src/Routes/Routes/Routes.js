@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorPage from "../../ErrorPage/ErrorPage";
 import Main from "../../Layout/Main";
 import CategoryAll from "../../Pages/Home/Catagory/CategoryAll";
 import Home from "../../Pages/Home/Home/Home";
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
 
       {
         path: "*",
-        element: <h2>this page is not found 404</h2>,
+        element: <ErrorPage></ErrorPage>,
       },
     ],
   },

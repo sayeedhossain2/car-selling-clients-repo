@@ -11,7 +11,7 @@ const CategoryAll = () => {
 
   return (
     <div>
-      <div className=" mt-10  grid grid-cols-1 md:grid-cols-2   ">
+      <div className=" mt-10 gap-10  grid grid-cols-1 md:grid-cols-2   ">
         {categoryCar.map((products, i) => (
           <CategoryDetails
             key={i}
