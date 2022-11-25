@@ -2,10 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../../ErrorPage/ErrorPage";
 import Main from "../../Layout/Main";
 import CategoryAll from "../../Pages/Home/Catagory/CategoryAll";
+import CategoryDetails from "../../Pages/Home/Catagory/CategoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
 import SpecificCatagory from "../../Pages/SpecificCatagory/SpecificCatagory";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -28,9 +30,17 @@ export const router = createBrowserRouter([
         path: "/specificcatagory",
         element: <SpecificCatagory></SpecificCatagory>,
       },
+      // {
+      //   path: "/categorydetails",
+      //   element: <CategoryDetails></CategoryDetails>,
+      // },
       {
         path: "/categoriall/:id",
-        element: <CategoryAll></CategoryAll>,
+        element: (
+          <PrivateRoute>
+            <CategoryAll></CategoryAll>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allProducts/${params.id}`),
       },

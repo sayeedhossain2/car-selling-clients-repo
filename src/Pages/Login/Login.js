@@ -1,10 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const { userLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleUserLogin = (event) => {
     event.preventDefault();
@@ -12,11 +17,13 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
     event.target.reset();
     userLogin(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
