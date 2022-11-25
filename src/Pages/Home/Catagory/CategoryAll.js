@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import BookingModal from "./BookingModal/BookingModal";
 import CategoryDetails from "./CategoryDetails";
 
 const CategoryAll = () => {
   const categoryCar = useLoaderData();
+  const [product, setProducts] = useState(null);
 
-  console.log(categoryCar.products);
+  console.log(categoryCar);
 
   return (
-    <div className=" mt-10  grid grid-cols-1 md:grid-cols-2 ">
-      {categoryCar.products.map((products, i) => (
-        <CategoryDetails key={i} products={products}></CategoryDetails>
-      ))}
+    <div>
+      <div className=" mt-10  grid grid-cols-1 md:grid-cols-2   ">
+        {categoryCar.map((products, i) => (
+          <CategoryDetails
+            key={i}
+            setProducts={setProducts}
+            products={products}
+          ></CategoryDetails>
+        ))}
+      </div>
+      {product && (
+        <BookingModal
+          product={product}
+          setProducts={setProducts}
+        ></BookingModal>
+      )}
     </div>
   );
 };
@@ -21,18 +35,13 @@ export default CategoryAll;
 // json
 
 /* 
-
-
-
 const cars =
-
 [
     {
    "categoryId": 1,
    "brand":"Tesla",
 
-   "products" : [ 
-     {
+  
        "name": "Tesla",
        "price": "1550000 ",
        "picture":"https://i.ibb.co/SrrmfvN/tesla.jpg",
@@ -65,15 +74,14 @@ const cars =
         "features": "Autopilot,Caraoke, Bioweapon defense mode ,Touchscreen, Streaming and video gaming,Web browser,Easter eggs, Air suspension",
         "describetion": "All Tesla models are equipped with a driver assistance system called Autopilot. "
     
-      }
-   ]
-},
+      },
+   
+
 
     {
    "categoryId": 2,
    "brand":"Honda",
-   "products" : [ 
-     {
+  
        "name": "Honda",
        "price": "1000000 ",
        "picture":"https://i.ibb.co/QYTV2Kx/civic.jpg",
@@ -106,10 +114,8 @@ const cars =
         "features": "Touchscreen, Streaming and video gaming,Web browser,Easter eggs, Air suspension",
         "describetion": " The Honda City is smartly styled with dignified stature and superior technological prowess. A wide, upper-grill in the front presents the signature Honda Solid Wing Face, and elevates the car to a position of prominence"
     
-      }
-   ]
-},
-
+      },
+   
     {
    "categoryId": 3,
    "brand": "Toyota",

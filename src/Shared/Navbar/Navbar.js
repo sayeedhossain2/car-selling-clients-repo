@@ -26,6 +26,7 @@ const Navbar = () => {
             <Link to="/login">Login</Link>
           </>
         )}
+        {user?.displayName && <Link>{user.displayName}</Link>}
       </li>
     </>
   );

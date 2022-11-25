@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
-  const { createUser, googleUserLogin } = useContext(AuthContext);
+  const { createUser, googleUserLogin, userNameUpdate } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
@@ -23,6 +24,12 @@ const Signup = () => {
         const user = userCredential.user;
         console.log(user);
         setError("");
+        const userName = {
+          displayName: name,
+        };
+        userNameUpdate(userName)
+          .then(() => {})
+          .catch((error) => {});
       })
       .catch((error) => {
         console.log(error);
