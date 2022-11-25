@@ -39,10 +39,7 @@ const CategoryDetails = ({ products, setProducts }) => {
           <img src={picture} alt="" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
-            {name}
-            <div className="badge badge-secondary">NEW</div>
-          </h2>
+          <h2 className="card-title">{name}</h2>
           <p> Price : {price}</p>
           <p> Location : {location}</p>
 
