@@ -13,9 +13,9 @@ const CategoryDetails = ({ products, setProducts }) => {
     originalPrice,
     brand,
     email,
-    authenticity,
-    features,
-    describetion,
+    // authenticity,
+    // features,
+    // describetion,
   } = products;
 
   return (

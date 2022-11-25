@@ -33,10 +33,10 @@ export const router = createBrowserRouter([
         path: "/specificcatagory",
         element: <SpecificCatagory></SpecificCatagory>,
       },
-      {
-        path: "/addaproduct",
-        element: <AddProduct></AddProduct>,
-      },
+      // {
+      //   path: "/addaproduct",
+      //   element: <AddProduct></AddProduct>,
+      // },
       // {
       //   path: "/categorydetails",
       //   element: <CategoryDetails></CategoryDetails>,
@@ -60,11 +60,19 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/dashboard/addaproduct",
+        element: <AddProduct></AddProduct>,
       },
     ],
   },

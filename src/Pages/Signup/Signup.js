@@ -1,12 +1,14 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
   const { createUser, googleUserLogin, userNameUpdate } =
     useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -27,13 +29,33 @@ const Signup = () => {
         const userName = {
           displayName: name,
         };
+
         userNameUpdate(userName)
-          .then(() => {})
+          .then(() => {
+            saveUser(name, email, role);
+          })
           .catch((error) => {});
       })
       .catch((error) => {
         console.log(error);
         setError(error.message);
+      });
+  };
+
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+        toast.success("User created successfully");
       });
   };
 
@@ -124,7 +146,7 @@ const Signup = () => {
                 onClick={handleWithGoogle}
                 className=" w-full btn btn-sm btn-outline btn-warning"
               >
-                <span className="ml-3">login via google</span>
+                <span className="ml-3">Signup via google</span>
               </button>
             </div>
           </div>

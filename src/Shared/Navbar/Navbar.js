@@ -22,10 +22,10 @@ const Navbar = () => {
         {" "}
         <Link to="/dashboard">Dashboard</Link>
       </li>
-      <li>
+      {/* <li>
         {" "}
         <Link to="/addaproduct">Add a Product</Link>
-      </li>
+      </li> */}
       {user?.email ? (
         <>
           <li>
