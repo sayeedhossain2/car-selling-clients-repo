@@ -3,19 +3,14 @@ import car from "../../../assets/car.jpg";
 
 const BannerHome = () => {
   return (
-    <div className="hero my-10 bg-base-200 rounded-xl">
-      <div className="hero-content flex-col lg:flex-row">
-        <img src={car} className=" rounded-lg w-1/2 mr-10 shadow-2xl" alt="" />
-        <div>
-          <h1 className="text-3xl font-bold">
-            Sell Your Car At The Best Price!
-          </h1>
-          <p className="py-6">
-            Experience the simplest way of selling your car with Spinny. Book
-            free evaluation today.
-          </p>
-        </div>
-      </div>
+    // <div className=" w-full md:h-[75vh] my-10  rounded-xl">
+    //   <img src={car} alt="" />
+    // </div>
+    <div className="  my-6 ">
+      <figure>
+        <img className="w-full rounded-xl md:h-[80vh]" src={car} alt="Shoes" />
+      </figure>
+      <div className="card-body"></div>
     </div>
   );
 };

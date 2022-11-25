@@ -2,20 +2,15 @@ import React from "react";
 
 const CategoryDetails = ({ products, setProducts }) => {
   const {
-    name,
+    productname,
     price,
     picture,
     location,
+    condition,
+    oldPrice,
     verified,
     seller,
-    condition,
-    used,
-    originalPrice,
-    brand,
     email,
-    // authenticity,
-    // features,
-    // describetion,
   } = products;
 
   return (
@@ -39,20 +34,14 @@ const CategoryDetails = ({ products, setProducts }) => {
           <img src={picture} alt="" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-          <p> Price : {price}</p>
-          <p> Location : {location}</p>
+          <h2 className="card-title">{productname}</h2>
 
+          <p> Location : {location}</p>
           <p> Condition : {condition}</p>
-          <p> Used : {used}</p>
-          <p> OriginalPrice: {originalPrice}</p>
-          <p> Brand : {brand}</p>
-          {/* <p> Authenticity : {authenticity}</p>
-          <p> Features : {features}</p>
-          <p> Describetion : {describetion}</p> */}
+          <p>Price : {price}</p>
+          <p> Old Price: {oldPrice}</p>
 
           <div className="card-actions justify-end">
-            {/* <button className="btn btn-outline btn-warning">Book Now</button> */}
             <label
               onClick={() => setProducts(products)}
               htmlFor="Car-booking"

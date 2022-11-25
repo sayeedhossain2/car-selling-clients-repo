@@ -9,6 +9,7 @@ import CategoryDetails from "../../Pages/Home/Catagory/CategoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyOrders from "../../Pages/MyOrders/MyOrders";
+import MyProduct from "../../Pages/MyProduct/MyProduct";
 import Signup from "../../Pages/Signup/Signup";
 import SpecificCatagory from "../../Pages/SpecificCatagory/SpecificCatagory";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myorders",
         element: <MyOrders></MyOrders>,
+      },
+      {
+        path: "/dashboard/myProduct",
+        element: <MyProduct></MyProduct>,
       },
     ],
   },

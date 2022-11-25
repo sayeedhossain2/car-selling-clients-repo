@@ -1,42 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const AddProduct = () => {
+  const { user } = useContext(AuthContext);
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
     const productname = form.productname.value;
+    const oldPrice = form.oldPrice.value;
     const price = form.price.value;
-
     const condition = form.condition.value;
     const number = form.number.value;
     const location = form.location.value;
     const yearofpurchase = form.yearofpurchase.value;
     const description = form.description.value;
-    const yourname = form.yourname.value;
-    const email = form.email.value;
     const picture = form.image.value;
-    const categoryId = parseInt(form.category.value);
-    console.log(
-      yourname,
-      email,
-      picture,
-      productname,
-      price,
-      number,
-      condition,
-      yearofpurchase,
-      location,
-      description,
-      categoryId
-    );
+    const categoryId = form.category.value;
 
     const products = {
-      yourname,
-      email,
+      seller: user?.displayName,
+      email: user?.email,
       picture,
       productname,
       price,
+      oldPrice,
       number,
       condition,
       yearofpurchase,
@@ -85,36 +73,10 @@ const AddProduct = () => {
                   <option value={3}>Toyota</option>
                 </select>
               </div>
-              {/* 8 */}
-              <div className="form-control">
-                <input
-                  required
-                  type="text"
-                  name="yourname"
-                  placeholder="Your Name"
-                  className="input input-bordered"
-                />
-              </div>
+
               {/* 9 */}
-              <div className="form-control">
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  placeholder="your Email"
-                  className="input input-bordered"
-                />
-              </div>
+
               {/* 9 */}
-              <div className="form-control">
-                <input
-                  required
-                  type="text"
-                  name="image"
-                  placeholder="Product Image"
-                  className="input input-bordered"
-                />
-              </div>
 
               {/*  1 */}
               <div className="form-control">
@@ -126,7 +88,26 @@ const AddProduct = () => {
                   className="input input-bordered"
                 />
               </div>
+              <div className="form-control">
+                <input
+                  required
+                  type="text"
+                  name="image"
+                  placeholder="Image"
+                  className="input input-bordered"
+                />
+              </div>
               {/* 2 */}
+
+              <div className="form-control">
+                <input
+                  required
+                  type="text"
+                  name="price"
+                  placeholder="price"
+                  className="input input-bordered"
+                />
+              </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -134,8 +115,8 @@ const AddProduct = () => {
                     <input
                       required
                       type="text"
-                      name="price"
-                      placeholder="Price"
+                      name="oldPrice"
+                      placeholder="old Price"
                       className="input input-bordered"
                     />
                   </div>
