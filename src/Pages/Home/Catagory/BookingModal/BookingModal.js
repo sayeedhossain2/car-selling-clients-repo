@@ -16,8 +16,29 @@ const BookingModal = ({ product, setProducts }) => {
     const number = form.number.value;
     const location = form.location.value;
     console.log(username, price, email, productName, number, location);
-    setProducts(null);
-    toast.success("user Informed successfully");
+
+    const myOrders = {
+      username,
+      price,
+      email,
+      productName,
+      number,
+      location,
+    };
+
+    fetch("http://localhost:5000/myOrders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(myOrders),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(null);
+        toast.success("Item is Booked");
+      });
   };
 
   return (
