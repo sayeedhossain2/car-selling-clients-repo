@@ -19,6 +19,7 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
     const role = form.role.value;
+    const verify = false;
     console.log(name, email, password, role);
 
     createUser(email, password)
@@ -32,7 +33,7 @@ const Signup = () => {
 
         userNameUpdate(userName)
           .then(() => {
-            saveUser(name, email, role);
+            saveUser(name, email, role, verify);
           })
           .catch((error) => {});
       })
@@ -42,8 +43,8 @@ const Signup = () => {
       });
   };
 
-  const saveUser = (name, email, role) => {
-    const user = { name, email, role };
+  const saveUser = (name, email, role, verify) => {
+    const user = { name, email, role, verify };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -53,7 +54,7 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         navigate("/");
         toast.success("User created successfully");
       });
@@ -65,6 +66,8 @@ const Signup = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        const role = "user";
+        saveUser(user.displayName, user.email, role);
       })
       .catch((error) => {
         console.error(error.message);
@@ -120,7 +123,7 @@ const Signup = () => {
                   name="role"
                   className="select select-bordered w-full max-w-xs"
                 >
-                  <option value="buyer">User</option>
+                  <option value="user">User</option>
                   <option value="seller">Seller</option>
                 </select>
               </div>

@@ -1,9 +1,24 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const getTime = (date) => {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    var ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+    return strTime;
+  };
+
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -31,6 +46,7 @@ const AddProduct = () => {
       location,
       description,
       categoryId,
+      time: getTime(new Date()),
     };
     console.log(products);
 
@@ -44,6 +60,7 @@ const AddProduct = () => {
         console.log(data);
         toast.success("product added successfully");
         event.target.reset();
+        navigate("/dashboard/myProduct");
       });
   };
 

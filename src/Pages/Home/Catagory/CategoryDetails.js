@@ -11,27 +11,31 @@ const CategoryDetails = ({ products, setProducts }) => {
     verified,
     seller,
     email,
+    time,
   } = products;
 
   return (
     <div>
       <div className="card w-96 bg-black text-white p-3 shadow-xl">
         <div>
-          <div className="flex">
-            <p> {seller}</p>
+          <div className=" flex justify-between">
+            <div className="flex">
+              <p> {seller}</p>
 
-            {verified && (
-              <img
-                className="w-4 ml-1"
-                src="https://cdn-icons-png.flaticon.com/512/5290/5290058.png?fbclid=IwAR2eKi9sFMz_SlTihjLyARvcc2h33HDPsALVW5cky_Jb6touq1wwvXqOjG0"
-                alt=""
-              />
-            )}
+              {verified && (
+                <img
+                  className="w-4 ml-1"
+                  src="https://cdn-icons-png.flaticon.com/512/5290/5290058.png?fbclid=IwAR2eKi9sFMz_SlTihjLyARvcc2h33HDPsALVW5cky_Jb6touq1wwvXqOjG0"
+                  alt=""
+                />
+              )}
+            </div>
+            <p>{time}</p>
           </div>
           <p> {email}</p>
         </div>
         <figure>
-          <img src={picture} alt="" />
+          <img className="w-full h-60" src={picture} alt="" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{productname}</h2>
