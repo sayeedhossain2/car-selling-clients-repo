@@ -14,7 +14,10 @@ const AllUsers = () => {
 
   return (
     <div>
-      <h2>this is all users {allUsers.length}</h2>
+      <h2 className=" text-center text-3xl font-bold my-7 text-orange-600">
+        {" "}
+        All Users: {allUsers.length}
+      </h2>
 
       <table className="table w-full">
         <thead>
@@ -23,6 +26,7 @@ const AllUsers = () => {
             <th>Email</th>
             <th>Role</th>
             <th>Verify</th>
+            <th>Action</th>
 
             <th></th>
           </tr>
@@ -41,6 +45,11 @@ const AllUsers = () => {
               <td>{myOrder.email}</td>
               <td>{myOrder.role}</td>
               <td>{myOrder.verify}</td>
+              <td>
+                <button className="btn btn-sm btn-outline btn-secondary">
+                  delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

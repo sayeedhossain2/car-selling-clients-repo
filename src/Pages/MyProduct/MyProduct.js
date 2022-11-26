@@ -22,6 +22,7 @@ const MyProduct = () => {
           <thead>
             <tr>
               <th></th>
+              <th></th>
               <th>Name</th>
               <th>Price</th>
               <th>Old Price</th>
@@ -33,8 +34,9 @@ const MyProduct = () => {
             </tr>
           </thead>
           <tbody>
-            {myOrders.map((myOrder) => (
+            {myOrders.map((myOrder, i) => (
               <tr>
+                <td>{i + 1}</td>
                 <th>
                   <img
                     className=" rounded-full w-20 h-20"
@@ -42,9 +44,10 @@ const MyProduct = () => {
                     alt=""
                   />
                 </th>
+
                 <td>{myOrder.seller}</td>
-                <td>{myOrder.price}</td>
-                <td>{myOrder.oldPrice}</td>
+                <td>${myOrder.price}</td>
+                <td>${myOrder.oldPrice}</td>
                 <td>{myOrder.location}</td>
                 <td>
                   <button className="btn btn-primary btn-sm">Delete</button>
