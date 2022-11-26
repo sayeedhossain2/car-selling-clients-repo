@@ -3,7 +3,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
 
 const CategoryDetails = ({ products, setProducts }) => {
-  const { loading } = useContext(AuthContext);
+  const { loading, user } = useContext(AuthContext);
   if (loading) {
     return (
       <h1 className=" flex justify-center mt-32 items-center">
@@ -18,7 +18,7 @@ const CategoryDetails = ({ products, setProducts }) => {
     location,
     condition,
     oldPrice,
-    verified,
+    // verified,
     seller,
     email,
     time,
@@ -32,7 +32,7 @@ const CategoryDetails = ({ products, setProducts }) => {
             <div className="flex">
               <p> {seller}</p>
 
-              {verified && (
+              {user?.verify && (
                 <img
                   className="w-4 ml-1"
                   src="https://cdn-icons-png.flaticon.com/512/5290/5290058.png?fbclid=IwAR2eKi9sFMz_SlTihjLyARvcc2h33HDPsALVW5cky_Jb6touq1wwvXqOjG0"

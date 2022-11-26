@@ -4,7 +4,8 @@ import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const BookingModal = ({ product, setProducts }) => {
   const { user } = useContext(AuthContext);
-  const { name, price, picture } = product;
+  const { productname, price, picture } = product;
+  console.log(product);
 
   const handleModalData = (event) => {
     event.preventDefault();
@@ -53,7 +54,7 @@ const BookingModal = ({ product, setProducts }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{name}</h3>
+          <h3 className="text-lg font-bold">{productname}</h3>
 
           <form
             onSubmit={handleModalData}
@@ -78,7 +79,7 @@ const BookingModal = ({ product, setProducts }) => {
             <input
               type="text"
               name="productName"
-              value={name}
+              value={productname}
               disabled
               placeholder="Type here"
               className="input input-bordered w-full "
