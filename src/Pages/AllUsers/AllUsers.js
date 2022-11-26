@@ -14,15 +14,21 @@ const AllUsers = () => {
   });
 
   const handleDelete = (allUser) => {
-    fetch(`http://localhost:5000/sellersDelete/${allUser._id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        refetch();
-        toast.success("User Deleted Successfully");
-      });
+    const agree = window.confirm(
+      `Are you sure you want to delete: ${allUser.name} `
+    );
+    if (agree) {
+      fetch(`http://localhost:5000/sellersDelete/${allUser._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+
+          refetch();
+          toast.success("User Deleted Successfully");
+        });
+    }
   };
 
   return (
