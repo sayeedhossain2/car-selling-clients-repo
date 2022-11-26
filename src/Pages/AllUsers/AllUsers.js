@@ -45,15 +45,8 @@ const AllUsers = () => {
           </tr>
         </thead>
         <tbody>
-          {allUsers.map((allUser) => (
-            <tr>
-              {/* <th>
-                  <img
-                    className=" rounded-full w-20 h-20"
-                    src={myOrder.picture}
-                    alt=""
-                  />
-                </th> */}
+          {allUsers.map((allUser, i) => (
+            <tr key={i}>
               <td>{allUser.name}</td>
               <td>{allUser.email}</td>
               <td>{allUser.role}</td>

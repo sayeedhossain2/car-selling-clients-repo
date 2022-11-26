@@ -24,6 +24,19 @@ const AllSellers = () => {
       });
   };
 
+  const handleVerified = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/verifiedStatus/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+        toast.success("Sellers verified Successfully");
+      });
+  };
+
   return (
     <div>
       <h2 className=" text-center text-3xl font-bold my-7 text-orange-600">
@@ -43,19 +56,24 @@ const AllSellers = () => {
           </tr>
         </thead>
         <tbody>
-          {allSellers.map((allSeller) => (
-            <tr>
-              {/* <th>
-                  <img
-                    className=" rounded-full w-20 h-20"
-                    src={myOrder.picture}
-                    alt=""
-                  />
-                </th> */}
+          {allSellers.map((allSeller, i) => (
+            <tr key={i}>
               <td>{allSeller.name}</td>
               <td>{allSeller.email}</td>
               <td>{allSeller.role}</td>
-              <td>{allSeller.verify}</td>
+
+              <td>
+                {allSeller.verify ? (
+                  <button className="btn btn-sm  btn-success ">verifyed</button>
+                ) : (
+                  <button
+                    onClick={() => handleVerified(allSeller._id)}
+                    className="btn btn-sm  btn-secondary"
+                  >
+                    verify
+                  </button>
+                )}
+              </td>
               <td>
                 <button
                   onClick={() => handleDelete(allSeller)}
