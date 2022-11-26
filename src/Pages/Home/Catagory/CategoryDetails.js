@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import { RingLoader } from "react-spinners";
 
 const CategoryDetails = ({ products, setProducts }) => {
+  const { loading } = useContext(AuthContext);
+  if (loading) {
+    return (
+      <h1 className=" flex justify-center mt-32 items-center">
+        <RingLoader color="#36d7b7" />
+      </h1>
+    );
+  }
   const {
     productname,
     price,

@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Signup = () => {
   const { createUser, googleUserLogin, userNameUpdate } =
@@ -147,9 +148,10 @@ const Signup = () => {
             <div className="-mt-5 mb-5">
               <button
                 onClick={handleWithGoogle}
-                className=" w-full btn btn-sm btn-outline btn-warning"
+                className=" w-4/5   ml-7 btn btn-outline btn-warning"
               >
-                <span className="ml-3">Signup via google</span>
+                <FaGoogle />
+                <span className="ml-3 ">Signup via google</span>
               </button>
             </div>
           </div>

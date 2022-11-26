@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { RingLoader } from "react-spinners";
 
 const MyProduct = () => {
   const { user, loading } = useContext(AuthContext);
@@ -15,7 +16,11 @@ const MyProduct = () => {
     },
   });
   if (loading) {
-    <h2>Loading....</h2>;
+    return (
+      <h1 className=" flex justify-center mt-32 items-center">
+        <RingLoader color="#36d7b7" />
+      </h1>
+    );
   }
 
   return (
