@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { RingLoader } from "react-spinners";
 
 const MyOrders = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { data: myOrders = [] } = useQuery({
     queryKey: ["myAllOrders"],
     queryFn: async () => {
@@ -15,6 +16,13 @@ const MyOrders = () => {
     },
   });
 
+  if (loading) {
+    return (
+      <h1 className=" flex justify-center mt-32 items-center">
+        <RingLoader color="#36d7b7" />
+      </h1>
+    );
+  }
   return (
     <div>
       <h2 className="text-5xl font-bold flex justify-center my-10">

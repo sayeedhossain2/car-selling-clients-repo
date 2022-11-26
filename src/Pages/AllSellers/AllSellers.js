@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { RingLoader } from "react-spinners";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const AllSellers = () => {
+  const { loading } = useContext(AuthContext);
   const { data: allSellers = [], refetch } = useQuery({
     queryKey: ["allSellers"],
     queryFn: async () => {
@@ -36,6 +39,14 @@ const AllSellers = () => {
         toast.success("Sellers verified Successfully");
       });
   };
+
+  if (loading) {
+    return (
+      <h1 className=" flex justify-center mt-32 items-center">
+        <RingLoader color="#36d7b7" />
+      </h1>
+    );
+  }
 
   return (
     <div>

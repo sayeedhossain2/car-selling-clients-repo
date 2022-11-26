@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { RingLoader } from "react-spinners";
 
 const AllUsers = () => {
-  // const { user } = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
@@ -17,6 +19,7 @@ const AllUsers = () => {
     const agree = window.confirm(
       `Are you sure you want to delete: ${allUser.name} `
     );
+
     if (agree) {
       fetch(`http://localhost:5000/sellersDelete/${allUser._id}`, {
         method: "DELETE",
@@ -30,6 +33,13 @@ const AllUsers = () => {
         });
     }
   };
+  if (loading) {
+    return (
+      <h1 className=" flex justify-center mt-32 items-center">
+        <RingLoader color="#36d7b7" />
+      </h1>
+    );
+  }
 
   return (
     <div>
