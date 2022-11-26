@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const MyProduct = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { data: myOrders = [] } = useQuery({
     queryKey: ["myAllOrders"],
     queryFn: async () => {
@@ -14,6 +14,9 @@ const MyProduct = () => {
       return data;
     },
   });
+  if (loading) {
+    <h2>Loading....</h2>;
+  }
 
   return (
     <div>

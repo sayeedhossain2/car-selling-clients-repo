@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import toast from "react-hot-toast";
 
 const AllUsers = () => {
   // const { user } = useContext(AuthContext);
-  const { data: allUsers = [] } = useQuery({
+  const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/allUsers`);
@@ -11,6 +12,18 @@ const AllUsers = () => {
       return data;
     },
   });
+
+  const handleDelete = (allUser) => {
+    fetch(`http://localhost:5000/sellersDelete/${allUser._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+        toast.success("User Deleted Successfully");
+      });
+  };
 
   return (
     <div>
@@ -32,7 +45,7 @@ const AllUsers = () => {
           </tr>
         </thead>
         <tbody>
-          {allUsers.map((myOrder) => (
+          {allUsers.map((allUser) => (
             <tr>
               {/* <th>
                   <img
@@ -41,12 +54,15 @@ const AllUsers = () => {
                     alt=""
                   />
                 </th> */}
-              <td>{myOrder.name}</td>
-              <td>{myOrder.email}</td>
-              <td>{myOrder.role}</td>
-              <td>{myOrder.verify}</td>
+              <td>{allUser.name}</td>
+              <td>{allUser.email}</td>
+              <td>{allUser.role}</td>
+              <td>{allUser.verify}</td>
               <td>
-                <button className="btn btn-sm btn-outline btn-secondary">
+                <button
+                  onClick={() => handleDelete(allUser)}
+                  className="btn btn-sm btn-outline btn-secondary"
+                >
                   delete
                 </button>
               </td>
