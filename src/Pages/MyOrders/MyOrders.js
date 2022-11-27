@@ -29,11 +29,21 @@ const MyOrders = () => {
         Total Orders: {myOrders.length}
       </h2>
 
-      <div className=" mt-10 grid  gap-10 grid-cols-2">
+      <div className=" mt-10 grid  gap-10 md:grid-cols-2">
         {myOrders.map((myorder) => (
           <div className="  card w-full p-4 text-white bg-black">
             <figure>
-              <img src={myorder.picture} alt="Shoes" />
+              <img
+                className="mt-3"
+                style={{
+                  width: "340px",
+                  height: "270px",
+                  objectFit: "cover",
+                  borderRadius: "15px",
+                }}
+                src={myorder.picture}
+                alt="Shoes"
+              />
             </figure>
             <div className="card-body">
               <h2 className="card-title">{myorder.productName}</h2>

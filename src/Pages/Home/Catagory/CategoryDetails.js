@@ -26,7 +26,7 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
 
   return (
     <div>
-      <div className="card w-96 bg-black text-white p-3 shadow-xl">
+      <div className="card w-full bg-black text-white p-3 shadow-xl">
         <div>
           <div className=" flex justify-between">
             <div className="flex">
@@ -45,7 +45,17 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
           <p> {email}</p>
         </div>
         <figure>
-          <img className="w-full h-60 mt-3" src={picture} alt="" />
+          <img
+            className="mt-3"
+            style={{
+              width: "340px",
+              height: "270px",
+              objectFit: "cover",
+              borderRadius: "15px",
+            }}
+            src={picture}
+            alt=""
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{productname}</h2>

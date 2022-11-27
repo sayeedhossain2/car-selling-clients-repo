@@ -1,13 +1,12 @@
 import React from "react";
 
 const AdvertiseProduct = ({ advertisedItem }) => {
-  const { picture } = advertisedItem;
+  const { picture, productname, location, condition, price, oldPrice } =
+    advertisedItem;
   console.log(advertisedItem);
   return (
     <div>
-      <h1>Email: {advertisedItem.email}</h1>
-
-      <div className="card card-compact w-full  bg-red-100 pt-7 shadow-xl">
+      <div className="card card-compact w-full  bg-black text-white pt-7 shadow-xl">
         <figure>
           <img
             style={{
@@ -21,10 +20,14 @@ const AdvertiseProduct = ({ advertisedItem }) => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title">{productname}</h2>
+
+          <p> Location : {location}</p>
+          <p> Condition : {condition}</p>
+          <p>Price : {price}</p>
+          <p> Old Price: {oldPrice}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-warning btn-outline">Buy Now</button>
           </div>
         </div>
       </div>

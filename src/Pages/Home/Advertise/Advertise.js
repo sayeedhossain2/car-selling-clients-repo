@@ -16,7 +16,7 @@ const Advertise = () => {
 
   return (
     <div>
-      <h1 className="text-4xl text-center text-red-500 mt-20 mb-5 font-bold">
+      <h1 className="text-4xl text-center text-orange-600 mt-20 mb-5 font-bold">
         Total Advertise: {advertisedItems.length}
       </h1>
 
