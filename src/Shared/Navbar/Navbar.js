@@ -25,17 +25,14 @@ const Navbar = () => {
           FAQ
         </Link>
       </li>
-      {/* <Link to="/categorydetails">All product</Link> */}
+
       <li>
         {" "}
         <Link className="font-bold text-xl" to="/dashboard">
           Dashboard
         </Link>
       </li>
-      {/* <li>
-        {" "}
-        <Link to="/addaproduct">Add a Product</Link>
-      </li> */}
+
       {user?.email ? (
         <>
           <li>
@@ -60,8 +57,12 @@ const Navbar = () => {
           </li>
         </>
       )}
-      <li className="btn btn-outline btn-secondary rounded-xl md:mt-1">
-        {user?.displayName && <Link>{user.displayName}</Link>}
+      <li>
+        {user?.displayName && (
+          <button className="btn btn-outline btn-secondary rounded-xl md:mt-1">
+            {user.displayName}
+          </button>
+        )}
       </li>
     </>
   );

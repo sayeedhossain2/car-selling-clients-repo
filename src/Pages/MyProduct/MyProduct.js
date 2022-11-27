@@ -6,7 +6,8 @@ import toast from "react-hot-toast";
 
 const MyProduct = () => {
   const { user, loading } = useContext(AuthContext);
-  const { data: myProducts = [] } = useQuery({
+  // const [users, setUsers] = useState(false);
+  const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
@@ -76,6 +77,24 @@ const MyProduct = () => {
       });
   };
 
+  const handleDelete = (myOrder) => {
+    const agree = window.confirm(
+      `Are you sure you want to delete: ${myOrder.productname} `
+    );
+
+    if (agree) {
+      fetch(`http://localhost:5000/myProductDelete/${myOrder._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          refetch();
+          toast.success("User Deleted Successfully");
+        });
+    }
+  };
+
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -89,6 +108,7 @@ const MyProduct = () => {
               <th>Old Price</th>
               <th>location</th>
               <th>Sales Status</th>
+              <th>Promote</th>
               <th>Action</th>
 
               <th></th>
@@ -97,16 +117,16 @@ const MyProduct = () => {
           <tbody>
             {myProducts.map((myOrder, i) => (
               <tr key={i}>
-                <td>{i + 1}</td>
+                <td></td>
                 <th>
                   <img
-                    className=" rounded-full w-20 h-20"
+                    className=" rounded-full w-20 h-16"
                     src={myOrder?.picture}
                     alt=""
                   />
                 </th>
 
-                <td>{myOrder?.seller}</td>
+                <td>{myOrder?.productname}</td>
                 <td>${myOrder?.price}</td>
                 <td>${myOrder?.oldPrice}</td>
                 <td>{myOrder?.location}</td>
@@ -116,12 +136,21 @@ const MyProduct = () => {
                     {myOrder?.sold}
                   </button>
                 </td>
+
                 <td>
                   <button
                     onClick={() => handleAdvertise(myOrder)}
                     className="btn btn-secondary btn-sm"
                   >
                     Advertise
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(myOrder)}
+                    className="btn btn-secondary btn-sm"
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>

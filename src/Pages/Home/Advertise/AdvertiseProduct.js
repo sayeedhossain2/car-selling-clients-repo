@@ -35,7 +35,7 @@ const AdvertiseProduct = ({ advertisedItem }) => {
           <p>Price : {price}</p>
           <p> Old Price: {oldPrice}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-warning btn-outline">Buy Now</button>
+            <button className="btn btn-warning btn-outline">Purchase</button>
           </div>
         </div>
       </div>

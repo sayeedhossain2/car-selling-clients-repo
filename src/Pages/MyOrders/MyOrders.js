@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
   const { user, loading } = useContext(AuthContext);
@@ -45,13 +46,24 @@ const MyOrders = () => {
                 alt="Shoes"
               />
             </figure>
-            <div className="card-body">
+            <div className="card-body relative">
               <h2 className="card-title">{myorder.productName}</h2>
-              <p>Name: {myorder.username}</p>
-              <p>Email: {myorder.email}</p>
-              <p>Price: {myorder.price}</p>
-              <p>Number: {myorder.number}</p>
-              <p>Location: {myorder.location}</p>
+              <div className="flex mb-4 justify-between">
+                <div>
+                  <p>Name: {myorder.username}</p>
+                  <p>Email: {myorder.email}</p>
+                  <p>Price: {myorder.price}</p>
+                </div>
+                <div>
+                  <p>Number: {myorder.number}</p>
+                  <p>Location: {myorder.location}</p>
+                </div>
+              </div>
+              <Link to={`/dashboard/payment/${myorder._id}`}>
+                <button className=" w-1/3 absolute bottom-0 right-3 btn btn-warning btn-outline btn-sm">
+                  Pay Now
+                </button>
+              </Link>
             </div>
           </div>
         ))}{" "}
