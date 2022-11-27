@@ -22,6 +22,7 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
     seller,
     email,
     time,
+    yearofpurchase,
   } = products;
 
   return (
@@ -62,6 +63,7 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
 
           <p> Location : {location}</p>
           <p> Condition : {condition}</p>
+          <p>year of Used: {yearofpurchase}</p>
           <p>Price : {price}</p>
           <p> Old Price: {oldPrice}</p>
 

@@ -1,8 +1,15 @@
 import React from "react";
 
 const AdvertiseProduct = ({ advertisedItem }) => {
-  const { picture, productname, location, condition, price, oldPrice } =
-    advertisedItem;
+  const {
+    picture,
+    productname,
+    location,
+    condition,
+    price,
+    oldPrice,
+    yearofpurchase,
+  } = advertisedItem;
   console.log(advertisedItem);
   return (
     <div>
@@ -24,6 +31,7 @@ const AdvertiseProduct = ({ advertisedItem }) => {
 
           <p> Location : {location}</p>
           <p> Condition : {condition}</p>
+          <p>year Of used: {yearofpurchase}</p>
           <p>Price : {price}</p>
           <p> Old Price: {oldPrice}</p>
           <div className="card-actions justify-end">

@@ -1,22 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import AdvertiseProduct from "./AdvertiseProduct";
 
 const Advertise = () => {
-  const { data: advertisedItems = [] } = useQuery({
-    queryKey: ["advertisedItem"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertisedItem");
-      const data = await res.json();
-      return data;
-    },
-  });
+  const [advertisedItems, setAdvertisedItems] = useState([]);
 
-  //   console.log(advertisedItem);
+  useEffect(() => {
+    axios.get("http://localhost:5000/advertisedItem").then((data) => {
+      setAdvertisedItems(data.data);
+      console.log(data);
+    });
+  }, []);
+  console.log(advertisedItems);
 
   return (
     <div>
-      {advertisedItems.length > 0 && (
+      {advertisedItems?.length > 0 && (
         <div>
           <h1 className="text-4xl text-center text-orange-600 mt-20 mb-5 font-bold">
             Total Advertise: {advertisedItems.length}
