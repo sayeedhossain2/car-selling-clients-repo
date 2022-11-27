@@ -9,6 +9,7 @@ const AdvertiseProduct = ({ advertisedItem, setAdvertiseModalItem }) => {
     price,
     oldPrice,
     yearofpurchase,
+    time,
   } = advertisedItem;
   console.log(advertisedItem);
   return (
@@ -34,6 +35,7 @@ const AdvertiseProduct = ({ advertisedItem, setAdvertiseModalItem }) => {
           <p>year Of used: {yearofpurchase}</p>
           <p>Price : {price}</p>
           <p> Old Price: {oldPrice}</p>
+          <p> Post time : {time}</p>
           <div className="card-actions justify-end">
             {/* <button className="btn ">Purchase</button> */}
             <label

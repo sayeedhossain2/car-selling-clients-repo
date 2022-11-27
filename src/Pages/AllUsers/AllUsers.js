@@ -66,7 +66,11 @@ const AllUsers = () => {
               <td>{allUser.name}</td>
               <td>{allUser.email}</td>
               <td>{allUser.role}</td>
-              <td>{allUser.verify}</td>
+              <td>
+                <button className="btn btn-sm btn-outline btn-secondary">
+                  verify
+                </button>
+              </td>
               <td>
                 <button
                   onClick={() => handleDelete(allUser)}

@@ -17,10 +17,10 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
     picture,
     price,
     productname,
+    time,
     // seller,
     // serviceId,
     // sold,
-    // time,
     // yearofpurchase,
     // _id,
   } = advertiseModalItem;

@@ -1,9 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
 
 const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
   const { loading, user } = useContext(AuthContext);
+  const [verifySeller, setVerifySeller] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/checkEmail?email=${products.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setVerifySeller(data.verify);
+      });
+  }, [products.email]);
+
   if (loading) {
     return (
       <h1 className=" flex justify-center mt-32 items-center">
@@ -33,7 +44,7 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
             <div className="flex">
               <p> {seller}</p>
 
-              {verify && (
+              {verifySeller && (
                 <img
                   className="w-4 ml-1"
                   src="https://cdn-icons-png.flaticon.com/512/5290/5290058.png?fbclid=IwAR2eKi9sFMz_SlTihjLyARvcc2h33HDPsALVW5cky_Jb6touq1wwvXqOjG0"

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import ReportInfoModal from "./ReportInfoModal";
 
 const ReportProduct = () => {
@@ -16,9 +17,39 @@ const ReportProduct = () => {
   });
   console.log(reviewinfodata.price);
 
+  // delete reported product from admin
+  const handleDeleteReport = (id) => {
+    fetch(`http://localhost:5000/reports/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success("Repoted product delete successfully");
+          handleProductDelete(id);
+        }
+      });
+  };
+
+  // delete reported product from category product
+  const handleProductDelete = (id) => {
+    fetch(`http://localhost:5000/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
-      <h2>this is report{reportproducts.length}</h2>
+      <h2 className=" text-3xl font-bold text-center my-5">
+        Total Report: {reportproducts.length}
+      </h2>
 
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -43,6 +74,7 @@ const ReportProduct = () => {
                 reportproduct={reportproduct}
                 setReviewinfodata={setReviewinfodata}
                 // setShowModal={setShowModal}
+                handleDeleteReport={handleDeleteReport}
               ></ReportInfoModal>
             ))}
           </tbody>

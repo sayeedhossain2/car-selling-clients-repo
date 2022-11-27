@@ -1,7 +1,11 @@
 import React from "react";
 
-const ReportInfoModal = ({ reportproduct, setReviewinfodata }) => {
-  const { picture, productname, price, sold, location, reportInfo } =
+const ReportInfoModal = ({
+  reportproduct,
+  setReviewinfodata,
+  handleDeleteReport,
+}) => {
+  const { picture, productname, price, sold, location, reportInfo, reportID } =
     reportproduct;
   return (
     <tr>
@@ -24,7 +28,12 @@ const ReportInfoModal = ({ reportproduct, setReviewinfodata }) => {
       </td>
 
       <td>
-        <button className="btn btn-error btn-sm">delete</button>
+        <button
+          onClick={() => handleDeleteReport(reportID)}
+          className="btn btn-error btn-sm"
+        >
+          delete
+        </button>
       </td>
     </tr>
   );

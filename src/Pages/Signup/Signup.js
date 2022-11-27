@@ -68,7 +68,8 @@ const Signup = () => {
         const token = credential.accessToken;
         const user = result.user;
         const role = "user";
-        saveUser(user.displayName, user.email, role);
+        const verify = false;
+        saveUser(user.displayName, user.email, role, verify);
       })
       .catch((error) => {
         console.error(error.message);
