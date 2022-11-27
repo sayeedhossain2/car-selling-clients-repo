@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import AdvertiseModal from "./AdvertiseModal/AdvertiseModal";
 import AdvertiseProduct from "./AdvertiseProduct";
 
 const Advertise = () => {
   const [advertisedItems, setAdvertisedItems] = useState([]);
+  const [advertiseModalItem, setAdvertiseModalItem] = useState(null);
 
   useEffect(() => {
     axios.get("http://localhost:5000/advertisedItem").then((data) => {
@@ -26,10 +28,17 @@ const Advertise = () => {
               <AdvertiseProduct
                 key={advertisedItem._id}
                 advertisedItem={advertisedItem}
+                setAdvertiseModalItem={setAdvertiseModalItem}
               ></AdvertiseProduct>
             ))}
           </div>
         </div>
+      )}
+      {advertiseModalItem && (
+        <AdvertiseModal
+          advertiseModalItem={advertiseModalItem}
+          setAdvertiseModalItem={setAdvertiseModalItem}
+        ></AdvertiseModal>
       )}
     </div>
   );

@@ -48,7 +48,7 @@ const MyOrders = () => {
             </figure>
             <div className="card-body relative">
               <h2 className="card-title">{myorder.productName}</h2>
-              <div className="flex mb-4 justify-between">
+              <div>
                 <div>
                   <p>Name: {myorder.username}</p>
                   <p>Email: {myorder.email}</p>

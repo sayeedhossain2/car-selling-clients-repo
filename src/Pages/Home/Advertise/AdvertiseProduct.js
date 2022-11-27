@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdvertiseProduct = ({ advertisedItem }) => {
+const AdvertiseProduct = ({ advertisedItem, setAdvertiseModalItem }) => {
   const {
     picture,
     productname,
@@ -35,7 +35,14 @@ const AdvertiseProduct = ({ advertisedItem }) => {
           <p>Price : {price}</p>
           <p> Old Price: {oldPrice}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-warning btn-outline">Purchase</button>
+            {/* <button className="btn ">Purchase</button> */}
+            <label
+              htmlFor="advertise-modal"
+              onClick={() => setAdvertiseModalItem(advertisedItem)}
+              className="btn btn-warning btn-outline"
+            >
+              Purchase
+            </label>
           </div>
         </div>
       </div>

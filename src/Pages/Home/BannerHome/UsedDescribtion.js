@@ -2,8 +2,9 @@ import React from "react";
 
 const UsedDescribtion = () => {
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 bg-green-100 my-14 p-5  gap-5">
+    <div className="rounded-xl grid grid-cols-1 md:grid-cols-2 bg-gray-600 text-white my-14 p-5  gap-5">
       <img
+        className="rounded-xl"
         src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=983&q=80"
         alt=""
       />
