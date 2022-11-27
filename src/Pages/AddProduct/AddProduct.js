@@ -47,6 +47,7 @@ const AddProduct = () => {
       description,
       categoryId,
       time: getTime(new Date()),
+      sold: "available",
     };
     console.log(products);
 
@@ -148,15 +149,6 @@ const AddProduct = () => {
                     />
                   </div>
                   {/* 4 */}
-                  <div className="form-control mb-3">
-                    <input
-                      required
-                      type="number"
-                      name="number"
-                      placeholder="Phone Number"
-                      className="input input-bordered"
-                    />
-                  </div>
                 </div>
 
                 <div>
@@ -180,17 +172,26 @@ const AddProduct = () => {
                     />
                   </div>
                   {/* 7 */}
-                  <div className="form-control mb-3">
-                    <input
-                      required
-                      type="text"
-                      name="description"
-                      placeholder="Description"
-                      className="input input-bordered"
-                    />
-                  </div>
                 </div>
               </div>
+              <div className="form-control mb-3">
+                <input
+                  required
+                  type="number"
+                  name="number"
+                  placeholder="Phone Number"
+                  className="input input-bordered"
+                />
+              </div>
+
+              <textarea
+                name="description"
+                placeholder="Description"
+                id=""
+                cols="30"
+                rows="4"
+                className="rounded"
+              ></textarea>
 
               <div className="form-control mt-6">
                 <input

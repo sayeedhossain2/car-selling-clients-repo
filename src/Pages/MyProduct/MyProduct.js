@@ -36,7 +36,7 @@ const MyProduct = () => {
               <th>Old Price</th>
               <th>location</th>
               <th>Action</th>
-              <th>Payment</th>
+              <th>Sold</th>
 
               <th></th>
             </tr>
@@ -61,7 +61,9 @@ const MyProduct = () => {
                   <button className="btn btn-primary btn-sm">Delete</button>
                 </td>
                 <td>
-                  <button className="btn btn-warning btn-sm">Pay</button>
+                  <button className="btn btn-warning btn-sm">
+                    {myOrder.sold}
+                  </button>
                 </td>
               </tr>
             ))}

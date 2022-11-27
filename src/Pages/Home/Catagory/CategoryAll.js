@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import BookingModal from "./BookingModal/BookingModal";
 import CategoryDetails from "./CategoryDetails";
+import ReportModal from "../../../ReportModal/ReportModal";
 
 const CategoryAll = () => {
   const categoryCar = useLoaderData();
   const [product, setProducts] = useState(null);
+  const [reportProduct, setReportProduct] = useState(null);
 
-  console.log(categoryCar);
+  // console.log(categoryCar);
 
   return (
     <div>
@@ -17,6 +19,8 @@ const CategoryAll = () => {
             key={i}
             setProducts={setProducts}
             products={products}
+            reportProduct={reportProduct}
+            setReportProduct={setReportProduct}
           ></CategoryDetails>
         ))}
       </div>
@@ -25,6 +29,13 @@ const CategoryAll = () => {
           product={product}
           setProducts={setProducts}
         ></BookingModal>
+      )}
+
+      {reportProduct && (
+        <ReportModal
+          reportProduct={reportProduct}
+          setReportProduct={setReportProduct}
+        ></ReportModal>
       )}
     </div>
   );

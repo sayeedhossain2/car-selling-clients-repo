@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
 
-const CategoryDetails = ({ products, setProducts }) => {
+const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
   const { loading, user } = useContext(AuthContext);
   if (loading) {
     return (
@@ -18,7 +18,7 @@ const CategoryDetails = ({ products, setProducts }) => {
     location,
     condition,
     oldPrice,
-    // verified,
+    verify,
     seller,
     email,
     time,
@@ -32,7 +32,7 @@ const CategoryDetails = ({ products, setProducts }) => {
             <div className="flex">
               <p> {seller}</p>
 
-              {user?.verify && (
+              {verify && (
                 <img
                   className="w-4 ml-1"
                   src="https://cdn-icons-png.flaticon.com/512/5290/5290058.png?fbclid=IwAR2eKi9sFMz_SlTihjLyARvcc2h33HDPsALVW5cky_Jb6touq1wwvXqOjG0"
@@ -45,7 +45,7 @@ const CategoryDetails = ({ products, setProducts }) => {
           <p> {email}</p>
         </div>
         <figure>
-          <img className="w-full h-60" src={picture} alt="" />
+          <img className="w-full h-60 mt-3" src={picture} alt="" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{productname}</h2>
@@ -55,7 +55,15 @@ const CategoryDetails = ({ products, setProducts }) => {
           <p>Price : {price}</p>
           <p> Old Price: {oldPrice}</p>
 
-          <div className="card-actions justify-end">
+          <div className="card-actions mt-3 flex justify-between">
+            <label
+              onClick={() => setReportProduct(products)}
+              htmlFor="repoted-items"
+              className="btn btn-outline btn-warning"
+            >
+              Report{" "}
+            </label>
+
             <label
               onClick={() => setProducts(products)}
               htmlFor="Car-booking"
