@@ -15,16 +15,22 @@ const Navbar = () => {
     <>
       <li>
         {" "}
-        <Link to="/">Home</Link>
+        <Link className="font-bold text-xl" to="/">
+          Home
+        </Link>
       </li>
       <li>
         {" "}
-        <Link to="/blog">FAQ</Link>
+        <Link className="font-bold text-xl" to="/blog">
+          FAQ
+        </Link>
       </li>
       {/* <Link to="/categorydetails">All product</Link> */}
       <li>
         {" "}
-        <Link to="/dashboard">Dashboard</Link>
+        <Link className="font-bold text-xl" to="/dashboard">
+          Dashboard
+        </Link>
       </li>
       {/* <li>
         {" "}
@@ -33,22 +39,30 @@ const Navbar = () => {
       {user?.email ? (
         <>
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button className="font-bold text-xl" onClick={handleLogout}>
+              Logout
+            </button>
           </li>
         </>
       ) : (
         <>
           <li>
             {" "}
-            <Link to="/signup">SignUp</Link>
+            <Link className="font-bold text-xl" to="/signup">
+              SignUp
+            </Link>
           </li>
           <li>
             {" "}
-            <Link to="/login">Login</Link>
+            <Link className="font-bold text-xl" to="/login">
+              Login
+            </Link>
           </li>
         </>
       )}
-      <li>{user?.displayName && <Link>{user.displayName}</Link>}</li>
+      <li className="btn btn-outline btn-secondary rounded-xl md:mt-1">
+        {user?.displayName && <Link>{user.displayName}</Link>}
+      </li>
     </>
   );
 

@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import useSeller from "../hooks/useSeller";
 import useSimpleuser from "../hooks/useSimpleuser";
+import Footer from "../Shared/Footer/Footer";
 
 import Navbar from "../Shared/Navbar/Navbar";
 
@@ -64,6 +65,7 @@ const DashboardLayout = () => {
           </ul>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
