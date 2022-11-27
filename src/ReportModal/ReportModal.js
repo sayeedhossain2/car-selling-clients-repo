@@ -20,6 +20,7 @@ const ReportModal = ({ reportProduct, setReportProduct }) => {
     time,
     sold,
     yearofpurchase,
+    _id,
   } = reportProduct;
   console.log(reportProduct);
 
@@ -46,6 +47,7 @@ const ReportModal = ({ reportProduct, setReportProduct }) => {
       sold,
       reporterName: user?.displayName,
       reporterEmail: user?.email,
+      reportID: _id,
     };
 
     console.log(reportReview);

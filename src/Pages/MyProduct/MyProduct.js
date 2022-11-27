@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 const MyProduct = () => {
   const { user, loading } = useContext(AuthContext);
-  const { data: myOrders = [] } = useQuery({
-    queryKey: ["myAllOrders"],
+  const { data: myProducts = [] } = useQuery({
+    queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
         `http://localhost:5000/myProducts?email=${user?.email}`
@@ -23,6 +24,58 @@ const MyProduct = () => {
     );
   }
 
+  const handleAdvertise = (myOrder) => {
+    // console.log(myOrder);
+    const {
+      categoryId,
+      condition,
+      description,
+      email,
+      location,
+      number,
+      oldPrice,
+      picture,
+      price,
+      productname,
+      seller,
+      sold,
+      time,
+      yearofpurchase,
+      _id,
+    } = myOrder;
+    const advertised = {
+      categoryId,
+      condition,
+      description,
+      email,
+      location,
+      number,
+      oldPrice,
+      picture,
+      price,
+      productname,
+      seller,
+      sold,
+      time,
+      yearofpurchase,
+      serviceId: _id,
+    };
+    console.log(advertised);
+
+    fetch("http://localhost:5000/advertised", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(advertised),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.acknowledged) {
+          toast.success("Advertise added successfully");
+        }
+      });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -35,34 +88,40 @@ const MyProduct = () => {
               <th>Price</th>
               <th>Old Price</th>
               <th>location</th>
+              <th>Sales Status</th>
               <th>Action</th>
-              <th>Sold</th>
 
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {myOrders.map((myOrder, i) => (
-              <tr>
+            {myProducts.map((myOrder, i) => (
+              <tr key={i}>
                 <td>{i + 1}</td>
                 <th>
                   <img
                     className=" rounded-full w-20 h-20"
-                    src={myOrder.picture}
+                    src={myOrder?.picture}
                     alt=""
                   />
                 </th>
 
-                <td>{myOrder.seller}</td>
-                <td>${myOrder.price}</td>
-                <td>${myOrder.oldPrice}</td>
-                <td>{myOrder.location}</td>
-                <td>
-                  <button className="btn btn-primary btn-sm">Delete</button>
-                </td>
+                <td>{myOrder?.seller}</td>
+                <td>${myOrder?.price}</td>
+                <td>${myOrder?.oldPrice}</td>
+                <td>{myOrder?.location}</td>
+
                 <td>
                   <button className="btn btn-warning btn-sm">
-                    {myOrder.sold}
+                    {myOrder?.sold}
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleAdvertise(myOrder)}
+                    className="btn btn-secondary btn-sm"
+                  >
+                    Advertise
                   </button>
                 </td>
               </tr>

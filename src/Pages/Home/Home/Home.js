@@ -4,6 +4,7 @@ import BannerHome from "../BannerHome/BannerHome";
 import UsedDescribtion from "../BannerHome/UsedDescribtion";
 import Catagory from "../Catagory/Catagory";
 import { RingLoader } from "react-spinners";
+import Advertise from "../Advertise/Advertise";
 
 const Home = () => {
   const { loading } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const Home = () => {
     <div>
       <BannerHome></BannerHome>
       <Catagory></Catagory>
+      <Advertise></Advertise>
       <UsedDescribtion></UsedDescribtion>
     </div>
   );

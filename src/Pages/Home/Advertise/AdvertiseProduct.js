@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const CategoryList = ({ catagori }) => {
-  const { brand, categoryId, logo } = catagori;
+const AdvertiseProduct = ({ advertisedItem }) => {
+  const { picture } = advertisedItem;
+  console.log(advertisedItem);
   return (
     <div>
+      <h1>Email: {advertisedItem.email}</h1>
+
       <div className="card card-compact w-full  bg-red-100 pt-7 shadow-xl">
         <figure>
           <img
@@ -14,19 +16,15 @@ const CategoryList = ({ catagori }) => {
               objectFit: "cover",
               borderRadius: "15px",
             }}
-            src={logo}
+            src={picture}
             alt="Shoes"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{brand}</h2>
-
+          <h2 className="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <Link to={`/categoriall/${categoryId}`}>
-              <button className="btn btn-secondary btn-outline">
-                See More
-              </button>
-            </Link>
+            <button className="btn btn-primary">Buy Now</button>
           </div>
         </div>
       </div>
@@ -34,4 +32,4 @@ const CategoryList = ({ catagori }) => {
   );
 };
 
-export default CategoryList;
+export default AdvertiseProduct;
