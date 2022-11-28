@@ -69,7 +69,7 @@ const MyOrders = () => {
               )}
 
               {myorder.paid && (
-                <Link to={`/dashboard/payment/${myorder._id}`}>
+                <Link>
                   <button className=" w-1/3 absolute bottom-0 right-3 btn btn-success   btn-sm">
                     Paid
                   </button>

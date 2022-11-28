@@ -74,6 +74,16 @@ const CheckOutForm = ({ payments }) => {
         picture,
       };
 
+      // const handleupdate = (id) => {
+      //   fetch(`https://car-selling-server.vercel.app/advertiseId${id}`, {
+      //     method: "PUT",
+      //   })
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       console.log(data);
+      //     });
+      // };
+
       fetch("https://car-selling-server.vercel.app/ProductPayments", {
         method: "POST",
         headers: {
@@ -84,9 +94,19 @@ const CheckOutForm = ({ payments }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if (data.insertedId) {
+          if (data?.insertedId) {
             setSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);
+            // handleupdate(bookingId);
+            // start
+            // fetch(`https://car-selling-server.vercel.app/productspicture?picture=${picture}`,{
+            //   method:"PUT",
+            // })
+            // .then(res => res.json())
+            // .then(data => {
+            //   console.log(data);
+            // })
+            // end
           }
         });
     }
