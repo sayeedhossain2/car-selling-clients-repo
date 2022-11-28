@@ -9,7 +9,8 @@ const CheckOutForm = ({ payments }) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  const { price, productName, email, username, _id, bookingId } = payments;
+  const { price, productName, email, username, _id, bookingId, picture } =
+    payments;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -70,6 +71,7 @@ const CheckOutForm = ({ payments }) => {
         transactionId: paymentIntent.id,
         bookingId: _id,
         productBookingId: bookingId,
+        picture: picture,
       };
 
       fetch("https://car-selling-server.vercel.app/ProductPayments", {

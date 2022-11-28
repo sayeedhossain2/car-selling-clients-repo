@@ -90,7 +90,6 @@ export const router = createBrowserRouter([
         path: "/dashboard/addaproduct",
         element: (
           <SellerRoute>
-            {" "}
             <AddProduct></AddProduct>
           </SellerRoute>
         ),
