@@ -71,7 +71,7 @@ const CheckOutForm = ({ payments }) => {
         transactionId: paymentIntent.id,
         bookingId: _id,
         productBookingId: bookingId,
-        picture: picture,
+        picture,
       };
 
       fetch("https://car-selling-server.vercel.app/ProductPayments", {
