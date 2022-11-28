@@ -5,7 +5,7 @@ import { RingLoader } from "react-spinners";
 
 import useSimpleuser from "../../hooks/useSimpleuser";
 
-const SellerRoute = ({ children }) => {
+const UserRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [isUsers, isUsersLoading] = useSimpleuser(user?.email);
   const location = useLocation();
@@ -25,4 +25,4 @@ const SellerRoute = ({ children }) => {
   return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
-export default SellerRoute;
+export default UserRoute;

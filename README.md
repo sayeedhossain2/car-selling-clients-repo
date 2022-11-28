@@ -17,7 +17,7 @@ https://github.com/programming-hero-web-course-4/b612-used-products-resale-serve
 ## Admin email and password
 
 sayeed@gmail.com
-123456
+pass: 123456
 
 ### About my project
 
