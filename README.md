@@ -14,12 +14,16 @@ https://github.com/programming-hero-web-course-4/b612-used-products-resale-clien
 
 https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-sayeedhossain2
 
+## Admin email and password
+
+sayeed@gmail.com
+123456
+
 ### About my project
 
--
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- my website have a navbar ,body, footer
+- implement dashboard, admin route, user,seller 3 type people login my website
+- admin can see all user, seller can see add product,my product, user only my order
+- full site responsive and using tailwind
+- using use context and dashboard related important thing
+- implement pament get way system (stripe)
