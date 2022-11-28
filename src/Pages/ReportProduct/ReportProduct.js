@@ -10,7 +10,9 @@ const ReportProduct = () => {
   const { data: reportproducts = [], refetch } = useQuery({
     queryKey: ["reportproduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/reportproduct");
+      const res = await fetch(
+        "https://car-selling-server.vercel.app/reportproduct"
+      );
       const data = await res.json();
       return data;
     },
@@ -19,7 +21,7 @@ const ReportProduct = () => {
 
   // delete reported product from admin
   const handleDeleteReport = (id) => {
-    fetch(`http://localhost:5000/reports/${id}`, {
+    fetch(`https://car-selling-server.vercel.app/reports/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -34,7 +36,7 @@ const ReportProduct = () => {
 
   // delete reported product from category product
   const handleProductDelete = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://car-selling-server.vercel.app/products/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

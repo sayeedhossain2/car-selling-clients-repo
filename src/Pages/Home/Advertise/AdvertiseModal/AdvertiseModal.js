@@ -47,7 +47,7 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
       paid,
     };
 
-    fetch("http://localhost:5000/myOrders", {
+    fetch("https://car-selling-server.vercel.app/myOrders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

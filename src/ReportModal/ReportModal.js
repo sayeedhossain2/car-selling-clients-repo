@@ -52,7 +52,7 @@ const ReportModal = ({ reportProduct, setReportProduct }) => {
 
     console.log(reportReview);
 
-    fetch("http://localhost:5000/allReport", {
+    fetch("https://car-selling-server.vercel.app/allReport", {
       method: "POST",
       headers: {
         "content-type": "application/json",

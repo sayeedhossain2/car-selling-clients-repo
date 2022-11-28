@@ -9,27 +9,35 @@ const AllSellers = () => {
   const { data: allSellers = [], refetch } = useQuery({
     queryKey: ["allSellers"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/allSellers`);
+      const res = await fetch(
+        `https://car-selling-server.vercel.app/allSellers`
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDelete = (allSeller) => {
-    fetch(`http://localhost:5000/sellersDelete/${allSeller._id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        refetch();
-        toast.success("Sellers Deleted Successfully");
-      });
+    const agree = window.confirm(`Are you sure you want to delete `);
+    if (agree) {
+      fetch(
+        `https://car-selling-server.vercel.app/sellersDelete/${allSeller._id}`,
+        {
+          method: "DELETE",
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          refetch();
+          toast.success("Sellers Deleted Successfully");
+        });
+    }
   };
 
   const handleVerified = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/verifiedStatus/${id}`, {
+    fetch(`https://car-selling-server.vercel.app/verifiedStatus/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

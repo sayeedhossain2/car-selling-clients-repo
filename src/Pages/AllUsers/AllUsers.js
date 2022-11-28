@@ -9,7 +9,7 @@ const AllUsers = () => {
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/allUsers`);
+      const res = await fetch(`https://car-selling-server.vercel.app/allUsers`);
       const data = await res.json();
       return data;
     },
@@ -21,9 +21,12 @@ const AllUsers = () => {
     );
 
     if (agree) {
-      fetch(`http://localhost:5000/sellersDelete/${allUser._id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://car-selling-server.vercel.app/sellersDelete/${allUser._id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

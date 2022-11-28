@@ -30,7 +30,7 @@ const BookingModal = ({ product, setProducts }) => {
       bookingId: _id,
     };
 
-    fetch("http://localhost:5000/myOrders", {
+    fetch("https://car-selling-server.vercel.app/myOrders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

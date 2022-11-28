@@ -7,7 +7,9 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
   const [verifySeller, setVerifySeller] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/checkEmail?email=${products.email}`)
+    fetch(
+      `https://car-selling-server.vercel.app/checkEmail?email=${products.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

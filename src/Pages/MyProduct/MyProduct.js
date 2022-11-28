@@ -12,7 +12,7 @@ const MyProduct = () => {
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/myProducts?email=${user?.email}`
+        `https://car-selling-server.vercel.app/myProducts?email=${user?.email}`
       );
       const data = await res.json();
       return data;
@@ -64,7 +64,7 @@ const MyProduct = () => {
     };
     console.log(advertised);
 
-    fetch("http://localhost:5000/advertised", {
+    fetch("https://car-selling-server.vercel.app/advertised", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(advertised),
@@ -85,9 +85,12 @@ const MyProduct = () => {
     );
 
     if (agree) {
-      fetch(`http://localhost:5000/myProductDelete/${myOrder._id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://car-selling-server.vercel.app/myProductDelete/${myOrder._id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
