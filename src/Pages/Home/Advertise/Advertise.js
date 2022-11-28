@@ -10,10 +10,10 @@ const Advertise = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/advertisedItem").then((data) => {
       setAdvertisedItems(data.data);
-      console.log(data);
+      // console.log(data);
     });
   }, []);
-  console.log(advertisedItems);
+  // console.log(advertisedItems);
 
   return (
     <div>

@@ -11,7 +11,7 @@ const AdvertiseProduct = ({ advertisedItem, setAdvertiseModalItem }) => {
     yearofpurchase,
     time,
   } = advertisedItem;
-  console.log(advertisedItem);
+  // console.log(advertisedItem);
   return (
     <div>
       <div className="card card-compact w-full  bg-black text-white pt-7 shadow-xl">
