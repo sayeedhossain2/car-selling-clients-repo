@@ -17,7 +17,7 @@ const Payment = () => {
       </h4>
       <div className="w-96 my-10">
         <Elements stripe={stripePromise}>
-          <CheckOutForm />
+          <CheckOutForm payments={payments} />
         </Elements>
       </div>
     </div>

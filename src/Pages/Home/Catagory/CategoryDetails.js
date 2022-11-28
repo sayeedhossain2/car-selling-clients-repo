@@ -3,14 +3,14 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
 
 const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
-  const { loading, user } = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
   const [verifySeller, setVerifySeller] = useState({});
 
   useEffect(() => {
     fetch(`http://localhost:5000/checkEmail?email=${products.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setVerifySeller(data.verify);
       });
   }, [products.email]);
@@ -29,7 +29,7 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
     location,
     condition,
     oldPrice,
-    verify,
+
     seller,
     email,
     time,

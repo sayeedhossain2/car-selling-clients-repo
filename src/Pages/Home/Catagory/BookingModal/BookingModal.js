@@ -16,8 +16,8 @@ const BookingModal = ({ product, setProducts }) => {
     const productName = form.productName.value;
     const number = form.number.value;
     const location = form.location.value;
-    console.log(username, price, email, productName, number, location);
-
+    // console.log(username, price, email, productName, number, location);
+    const paid = false;
     const myOrders = {
       username,
       price,
@@ -26,6 +26,7 @@ const BookingModal = ({ product, setProducts }) => {
       number,
       location,
       picture,
+      paid,
     };
 
     fetch("http://localhost:5000/myOrders", {

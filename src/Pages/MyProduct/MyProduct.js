@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { RingLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
 const MyProduct = () => {
   const { user, loading } = useContext(AuthContext);
+  const [processing, setProcessing] = useState(false);
   // const [users, setUsers] = useState(false);
   const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["myProducts"],
@@ -73,6 +74,7 @@ const MyProduct = () => {
         // console.log(data);
         if (data.acknowledged) {
           toast.success("Advertise added successfully");
+          setProcessing(true);
         }
       });
   };
@@ -138,12 +140,24 @@ const MyProduct = () => {
                 </td>
 
                 <td>
-                  <button
-                    onClick={() => handleAdvertise(myOrder)}
-                    className="btn btn-secondary btn-sm"
-                  >
-                    Advertise
-                  </button>
+                  {myOrder.sold === "available" && (
+                    <button
+                      onClick={() => handleAdvertise(myOrder)}
+                      className="btn btn-secondary btn-sm"
+                      disabled={processing}
+                    >
+                      Advertise
+                    </button>
+                  )}
+                  {!myOrder.sold === "available" && (
+                    <button
+                      onClick={() => handleAdvertise(myOrder)}
+                      className="btn btn-secondary btn-sm"
+                      disabled={processing}
+                    >
+                      A
+                    </button>
+                  )}
                 </td>
                 <td>
                   <button

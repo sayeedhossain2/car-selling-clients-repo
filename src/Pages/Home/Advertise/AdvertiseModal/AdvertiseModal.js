@@ -17,7 +17,7 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
     picture,
     price,
     productname,
-    time,
+    // time,
     // seller,
     // serviceId,
     // sold,
@@ -35,7 +35,7 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
     const number = form.number.value;
     const location = form.location.value;
     // console.log(username, price, email, productName, number, location);
-
+    const paid = false;
     const myOrders = {
       username,
       price,
@@ -44,6 +44,7 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
       number,
       location,
       picture,
+      paid,
     };
 
     fetch("http://localhost:5000/myOrders", {
