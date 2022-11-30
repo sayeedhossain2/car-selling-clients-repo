@@ -12,7 +12,7 @@ const MyProduct = () => {
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
-        `https://car-selling-server.vercel.app/myProducts?email=${user?.email}`
+        ` https://car-selling-server.vercel.app/mypro?email=${user?.email}`
       );
       const data = await res.json();
       return data;
@@ -64,7 +64,7 @@ const MyProduct = () => {
     };
     console.log(advertised);
 
-    fetch("https://car-selling-server.vercel.app/advertised", {
+    fetch(" https://car-selling-server.vercel.app/advertised", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(advertised),
@@ -86,7 +86,7 @@ const MyProduct = () => {
 
     if (agree) {
       fetch(
-        `https://car-selling-server.vercel.app/myProductDelete/${myOrder._id}`,
+        ` https://car-selling-server.vercel.app/myProductDelete/${myOrder._id}`,
         {
           method: "DELETE",
         }
@@ -147,7 +147,7 @@ const MyProduct = () => {
                     <button
                       onClick={() => handleAdvertise(myOrder)}
                       className="btn btn-secondary btn-sm"
-                      disabled={processing}
+                      // disabled={processing}
                     >
                       Advertise
                     </button>

@@ -27,10 +27,10 @@ const BookingModal = ({ product, setProducts }) => {
       location,
       picture,
       paid,
-      bookingId: _id,
+      booking: _id,
     };
 
-    fetch("https://car-selling-server.vercel.app/myOrders", {
+    fetch(" https://car-selling-server.vercel.app/myOrders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

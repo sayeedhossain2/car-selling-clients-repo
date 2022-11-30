@@ -9,12 +9,21 @@ const CheckOutForm = ({ payments }) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  const { price, productName, email, username, _id, bookingId, picture } =
-    payments;
+  const {
+    price,
+    productName,
+    email,
+    username,
+    _id,
+    bookingId,
+    booking,
+    picture,
+  } = payments;
+  console.log(payments);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://car-selling-server.vercel.app/create-payment-intent", {
+    fetch(" https://car-selling-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,6 +33,34 @@ const CheckOutForm = ({ payments }) => {
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
+
+  const handleupdate = (bookingId) => {
+    fetch(` https://car-selling-server.vercel.app/advertiseId/${bookingId}`, {
+      method: "PUT",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const handle = (booking) => {
+    fetch(` https://car-selling-server.vercel.app/alProductsId/${booking}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -74,17 +111,7 @@ const CheckOutForm = ({ payments }) => {
         picture,
       };
 
-      // const handleupdate = (id) => {
-      //   fetch(`https://car-selling-server.vercel.app/advertiseId${id}`, {
-      //     method: "PUT",
-      //   })
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       console.log(data);
-      //     });
-      // };
-
-      fetch("https://car-selling-server.vercel.app/ProductPayments", {
+      fetch(" https://car-selling-server.vercel.app/ProductPayments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -93,20 +120,13 @@ const CheckOutForm = ({ payments }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data?.insertedId) {
             setSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);
-            // handleupdate(bookingId);
-            // start
-            // fetch(`https://car-selling-server.vercel.app/productspicture?picture=${picture}`,{
-            //   method:"PUT",
-            // })
-            // .then(res => res.json())
-            // .then(data => {
-            //   console.log(data);
-            // })
-            // end
+
+            handleupdate(booking);
+            handle(booking);
           }
         });
     }

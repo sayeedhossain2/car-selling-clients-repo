@@ -19,10 +19,10 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
     productname,
     // time,
     // seller,
-    // serviceId,
-    // sold,
+    serviceId,
+    sold,
     // yearofpurchase,
-    // _id,
+    _id,
   } = advertiseModalItem;
 
   const handleModalData = (event) => {
@@ -45,9 +45,11 @@ const AdvertiseModal = ({ advertiseModalItem, setAdvertiseModalItem }) => {
       location,
       picture,
       paid,
+      sold,
+      booking: serviceId,
     };
 
-    fetch("https://car-selling-server.vercel.app/myOrders", {
+    fetch(" https://car-selling-server.vercel.app/myOrders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

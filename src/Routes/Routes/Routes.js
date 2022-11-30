@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://car-selling-server.vercel.app/allProducts/${params.id}`
+            ` https://car-selling-server.vercel.app/allProducts/${params.id}`
           ),
       },
 
@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
         element: <Payment></Payment>,
         loader: ({ params }) =>
           fetch(
-            `https://car-selling-server.vercel.app/myAllOrders/${params.id}`
+            ` https://car-selling-server.vercel.app/myAllOrders/${params.id}`
           ),
       },
       {

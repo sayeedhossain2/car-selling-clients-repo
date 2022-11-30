@@ -8,12 +8,10 @@ const Advertise = () => {
   const [advertiseModalItem, setAdvertiseModalItem] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("https://car-selling-server.vercel.app/advertisedItem")
-      .then((data) => {
-        setAdvertisedItems(data.data);
-        // console.log(data);
-      });
+    axios.get(" https://car-selling-server.vercel.app/adver").then((data) => {
+      setAdvertisedItems(data?.data);
+      // console.log(data);
+    });
   }, []);
   // console.log(advertisedItems);
 

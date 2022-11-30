@@ -8,7 +8,7 @@ const CategoryDetails = ({ products, setProducts, setReportProduct }) => {
 
   useEffect(() => {
     fetch(
-      `https://car-selling-server.vercel.app/checkEmail?email=${products.email}`
+      ` https://car-selling-server.vercel.app/checkEmail?email=${products.email}`
     )
       .then((res) => res.json())
       .then((data) => {

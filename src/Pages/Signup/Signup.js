@@ -21,7 +21,7 @@ const Signup = () => {
     const password = form.password.value;
     const role = form.role.value;
     const verify = false;
-    console.log(name, email, password, role);
+    // console.log(name, email, password, role);
 
     createUser(email, password)
       .then((userCredential) => {
@@ -46,7 +46,7 @@ const Signup = () => {
 
   const saveUser = (name, email, role, verify) => {
     const user = { name, email, role, verify };
-    fetch("https://car-selling-server.vercel.app/users", {
+    fetch(" https://car-selling-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

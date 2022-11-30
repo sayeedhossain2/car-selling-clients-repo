@@ -8,7 +8,10 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
   const payments = useLoaderData();
-  const { productName, price } = payments;
+
+  const { productName, price, booking } = payments;
+  console.log(payments.booking);
+
   return (
     <div className="ml-5">
       <h2 className="text-4xl ">payment for {productName}</h2>

@@ -11,7 +11,7 @@ const ReportProduct = () => {
     queryKey: ["reportproduct"],
     queryFn: async () => {
       const res = await fetch(
-        "https://car-selling-server.vercel.app/reportproduct"
+        " https://car-selling-server.vercel.app/reportproduct"
       );
       const data = await res.json();
       return data;
@@ -21,7 +21,7 @@ const ReportProduct = () => {
 
   // delete reported product from admin
   const handleDeleteReport = (id) => {
-    fetch(`https://car-selling-server.vercel.app/reports/${id}`, {
+    fetch(` https://car-selling-server.vercel.app/reports/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -36,7 +36,7 @@ const ReportProduct = () => {
 
   // delete reported product from category product
   const handleProductDelete = (id) => {
-    fetch(`https://car-selling-server.vercel.app/products/${id}`, {
+    fetch(` https://car-selling-server.vercel.app/products/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

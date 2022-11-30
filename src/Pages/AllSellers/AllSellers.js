@@ -10,7 +10,7 @@ const AllSellers = () => {
     queryKey: ["allSellers"],
     queryFn: async () => {
       const res = await fetch(
-        `https://car-selling-server.vercel.app/allSellers`
+        ` https://car-selling-server.vercel.app/allSellers`
       );
       const data = await res.json();
       return data;
@@ -21,7 +21,7 @@ const AllSellers = () => {
     const agree = window.confirm(`Are you sure you want to delete `);
     if (agree) {
       fetch(
-        `https://car-selling-server.vercel.app/sellersDelete/${allSeller._id}`,
+        ` https://car-selling-server.vercel.app/sellersDelete/${allSeller._id}`,
         {
           method: "DELETE",
         }
@@ -37,7 +37,7 @@ const AllSellers = () => {
 
   const handleVerified = (id) => {
     console.log(id);
-    fetch(`https://car-selling-server.vercel.app/verifiedStatus/${id}`, {
+    fetch(` https://car-selling-server.vercel.app/verifiedStatus/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

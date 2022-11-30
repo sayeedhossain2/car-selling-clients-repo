@@ -51,7 +51,7 @@ const AddProduct = () => {
     };
     console.log(products);
 
-    fetch("https://car-selling-server.vercel.app/allProducts", {
+    fetch(" https://car-selling-server.vercel.app/allProducts", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(products),
