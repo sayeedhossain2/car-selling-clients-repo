@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
@@ -24,6 +25,8 @@ const Login = () => {
         const user = userCredential.user;
         setError("");
         navigate(from, { replace: true });
+
+        toast.success("Login successfully!");
       })
       .catch((error) => {
         const errorCode = error.code;
