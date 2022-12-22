@@ -48,18 +48,7 @@ const UsedDescribtion = () => {
           The Bangladeshi car market has a wide range of vehicles from India,
           Japan, South Korea, Germany, France, China, Malaysia, the USA and t he
           UK. Among them, India and Japan are the most dominating sources f or
-          importing cars in Bangladesh. The global used car market size was
-          valued at USD 1.57 trillion in 2021 and is expected to expand at a
-          compound annual growth rate (CAGR) of 6.1% from 2022 to 2030. The used
-          car shipment was recorded at 120.3 million units in 2021. The market
-          has witnessed significant growth in the last few years as the price
-          competitiveness among the new players has been one glowing spot in the
-          used car industry. The inability of customers to buy new cars became
-          one of the reasons for the growing used cars sales volume, which is
-          complemented by the investments made by the industry participants to
-          establish their dealership network in the market. These dealership
-          networks helped market participants to brand and make used car options
-          viable.
+          importing cars in Bangladesh.
         </p>
         <img
           className="rounded-xl"
